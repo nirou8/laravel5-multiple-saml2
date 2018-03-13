@@ -1,0 +1,39 @@
+{
+    "name": "nirou8/laravel5-multiple-saml2",
+    "description": "A Laravel5 package for Saml2 integration as an SP based on OneLogin toolkit",
+    "keywords": ["laravel5","saml", "saml2", "onelogin","IDP", "SP"],
+    "homepage": "https://github.com/nirou8/laravel5-multiple-saml2",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Nadhir",
+            "email": "khayati.nadhir@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-openssl": "*",
+        "illuminate/support": ">=5.0.0",
+        "onelogin/php-saml": "^2.10"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Nirou\\Saml2\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nirou\\Saml2\\Saml2ServiceProvider"
+            ],
+            "aliases": {
+                "Saml2": "Nirou\\Saml2\\Facades\\Saml2Auth"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}
