@@ -10,7 +10,7 @@ The aim of this library is to be as simple as possible.
 You can install the package via composer:
 
 ```
-composer require nadhir/laravel5-multiple-saml2
+composer require nirou8/laravel5-multiple-saml2
 ```
 
 If you are using Laravel 5.5 and up, the service provider will automatically get registered.
