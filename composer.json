@@ -4,7 +4,7 @@
     "keywords": ["laravel5","saml", "saml2", "onelogin","IDP", "SP"],
     "homepage": "https://github.com/nirou8/laravel5-multiple-saml2",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "authors": [
         {
             "name": "Nadhir",
