@@ -29,7 +29,11 @@ class Saml2Controller extends Controller
     public function metadata()
     {
 
-        $metadata = $this->saml2Auth->getMetadata();
+        //
+        if(is_file(resource_path()."/metadata.xml"))
+        $metadata = file_get_contents(resource_path()."/metadata.xml");
+        else
+            $metadata = $this->saml2Auth->getMetadata();
 
         return response($metadata, 200, ['Content-Type' => 'text/xml']);
     }
