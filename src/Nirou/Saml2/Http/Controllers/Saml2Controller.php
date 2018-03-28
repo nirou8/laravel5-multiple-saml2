@@ -2,6 +2,7 @@
 
 namespace Nirou\Saml2\Http\Controllers;
 
+use Nirou\Saml2\Events\Saml2LoginCmsEvent;
 use Nirou\Saml2\Events\Saml2LoginEvent;
 use Nirou\Saml2\Saml2Auth;
 use Illuminate\Routing\Controller;
@@ -57,6 +58,37 @@ class Saml2Controller extends Controller
         $user = $this->saml2Auth->getSaml2User();
 
         event(new Saml2LoginEvent($user, $this->saml2Auth));
+
+        $redirectUrl = $user->getIntendedUrl();
+
+        if ($redirectUrl !== null) {
+            return redirect($redirectUrl);
+        } else {
+
+            return redirect(config('saml2_settings.loginRoute'));
+        }
+    }
+
+
+    /**
+     * Process an incoming saml2 assertion request.
+     * Fires 'Saml2LoginEvent' event if a valid user is Found
+     */
+    public function acs_cms()
+    {
+        $errors = $this->saml2Auth->acs();
+
+        if (!empty($errors)) {
+            logger()->error('Saml2 error_detail', ['error' => $this->saml2Auth->getLastErrorReason()]);
+            session()->flash('saml2_error_detail', [$this->saml2Auth->getLastErrorReason()]);
+
+            logger()->error('Saml2 error', $errors);
+            session()->flash('saml2_error', $errors);
+            return redirect(config('saml2_settings.errorRoute'));
+        }
+        $user = $this->saml2Auth->getSaml2User();
+
+        event(new Saml2LoginCmsEvent($user, $this->saml2Auth));
 
         $redirectUrl = $user->getIntendedUrl();
 
