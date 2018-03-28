@@ -91,7 +91,8 @@ return $settings = array(
 
         // Specifies info about where and how the <AuthnResponse> message MUST be
         // returned to the requester, in this case our SP.
-        'assertionConsumerService' => array(
+        'assertionConsumerService' => array(array('url' => ''),
+            array('url' => ''),
             // URL Location where the <Response> from the IdP will be returned,
             // using HTTP-POST binding.
             // Leave blank to use the 'saml_acs' route

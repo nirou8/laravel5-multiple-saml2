@@ -95,9 +95,9 @@ class Saml2Controller extends Controller
     /**
      * This initiates a login request
      */
-    public function login()
+    public function login($index)
     {
-        $this->saml2Auth->login(config('saml2_settings.loginRoute'));
+        $this->saml2Auth->login($index, config('saml2_settings.loginRoute'));
     }
 
 }

@@ -11,7 +11,7 @@ Route::group([
         'uses' => 'Nirou\Saml2\Http\Controllers\Saml2Controller@logout',
     ));
 
-    Route::get('/login', array(
+    Route::get('/login/{index}', array(
         'as' => 'saml_login',
         'uses' => 'Nirou\Saml2\Http\Controllers\Saml2Controller@login',
     ));
@@ -24,6 +24,11 @@ Route::group([
     Route::post('/acs', array(
         'as' => 'saml_acs',
         'uses' => 'Nirou\Saml2\Http\Controllers\Saml2Controller@acs',
+    ));
+
+    Route::post('/acs_cms', array(
+        'as' => 'saml_acs_cms',
+        'uses' => 'Nirou\Saml2\Http\Controllers\Saml2Controller@acs_cms',
     ));
 
     Route::get('/sls', array(
