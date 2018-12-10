@@ -86,11 +86,11 @@ class Saml2Auth
      *
      * @throws OneLogin_Saml2_Error
      */
-    function logout($returnTo = null, $nameId = null, $sessionIndex = null, $nameIdFormat = null)
+    function logout($application_index = null, $returnTo = null, $nameId = null, $sessionIndex = null, $nameIdFormat = null)
     {
         $auth = $this->auth;
 
-        $auth->logout($returnTo, [], $nameId, $sessionIndex, false, $nameIdFormat);
+        $auth->logout($application_index, $returnTo, [], $nameId, $sessionIndex, false, $nameIdFormat);
     }
 
     /**
