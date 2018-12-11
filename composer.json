@@ -14,7 +14,7 @@
         "php": ">=5.4.0",
         "ext-openssl": "*",
         "illuminate/support": ">=5.0.0",
-        "nirou8/php-multiple-saml": "1.0"
+        "nirou8/php-multiple-saml": "1.3.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*"
